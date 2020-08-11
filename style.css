@@ -18,6 +18,7 @@ h2 {
  flex-direction: row;
  justify-content: space-evenly;
  align-items: center;
+ padding: 0px 150px;
 }
 
 
@@ -63,11 +64,29 @@ h2 {
  border-right: 1px solid black;
 }
 
+.game-piece-white {
+ height: 45px;
+ width: 45px;
+ border-radius: 50%;
+ display: inline-block;
+ margin: 6.5px;
+ background-color: white;
+}
+
+.game-piece-black {
+ height: 45px;
+ width: 45px;
+ border-radius: 50%;
+ display: inline-block;
+ margin: 6.5px;
+ background-color: black;
+}
+
 .game-piece {
  height: 45px;
  width: 45px;
- background-color: black;
  border-radius: 50%;
- margin: auto;
+ display: inline-block;
+ margin: 6.5px;
 }
 
