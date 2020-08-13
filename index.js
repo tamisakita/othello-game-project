@@ -1,25 +1,75 @@
-// eslint-disable-next-line max-len
-// criar funcao para verificar se posso posicionar a peça naquele square (caso nao tenha como posicionar, passar a vez para o outro player)
+// constantes
+// let board = [];
 
-// caso seja valido, a peça aparece se eu clicar no square
+// get the elements
+const board = document.querySelector('.game-board');
+const square = document.querySelectorAll('.square');
+const piece = document.querySelector('.piece');
+const colorBlack = document.querySelector('.color-black');
+const colorWhite = document.querySelector('.color-white');
 
-// criar funcao para as peças do oponente virar quando eu posicionar uma peça
+// Interation: Initial value of the state (the state values can change over time)
+let initialGame = {
+  player1Black: true,
+  player2White: true,
+  player1First: true,
+  startPieces: [
+    {
+      piecePlayer: piece,
+      position: [4, 4],
+      color: colorWhite,
+    },
+    {
+      piecePlayer: piece,
+      position: [4, 5],
+      color: colorBlack,
+    },
+    {
+      piecePlayer: piece,
+      position: [5, 4],
+      color: colorBlack,
+    },
+    {
+      piecePlayer: piece,
+      position: [5, 4],
+      color: colorWhite,
+    },
+  ],
+};
 
-// contar a quantidade de peça de cada player e verificar quem tem mais peças, se for igual é tie
 
-// como faço pra mudar as cores da peça?
+// Interation: set each square (what is the position)
+// function startBoard() {
+//   document.querySelectorAll('#square-').forEach(() => {
+//     if (initialGame.startPieces) {
+//       return 
+//     }
+//   });
+// }
 
-let player1 = 'black';
-let player2 = 'white';
+startBoard();
 
-function validPosition() {
+// Iteration: function to add pieces in the board
+// function addPieces(row, col, pieceColor) {
+//   const square = eachSquareElement(row, col);
+//   const piece = document.createElement('div');
+//   piece.classList.add('piece');
+//   piece.classList.add(pieceColor);
+//   square.appendChild(piece);
+// }
 
-}
+// Iteration: set the color of the pieces
 
-function flipOponentPiece() {
+// Iteration: check the squares that can receive the pieces
 
-}
+// Iteration: set the visibility of the initial pieces in the board
 
-function gameOver() {
+// Iteration: set the movement of player 1/2
 
-}
+// Iteration: flip the pieces when needed
+
+// Iteration: check if you can no longer add pieces
+
+// Iteration: check the number of pieces of each player to finish the game
+
+// Iteration: Sum the pieces to check the winner or if its tie

@@ -64,29 +64,18 @@ h2 {
  border-right: 1px solid black;
 }
 
-.game-piece-white {
+.piece {
  height: 45px;
  width: 45px;
  border-radius: 50%;
  display: inline-block;
  margin: 6.5px;
- background-color: white;
 }
 
-.game-piece-black {
- height: 45px;
- width: 45px;
- border-radius: 50%;
- display: inline-block;
- margin: 6.5px;
+.color-black {
  background-color: black;
 }
 
-.game-piece {
- height: 45px;
- width: 45px;
- border-radius: 50%;
- display: inline-block;
- margin: 6.5px;
+.color-white {
+ background-color: white;
 }
-
