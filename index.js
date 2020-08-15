@@ -1,9 +1,3 @@
-// constantes
-// let board = [];
-
-// get the elements
-
-// // Interation: Initial value of the state (the state values can change over time)
 const initialGame = {
   player1Black: true,
   player2White: true,
@@ -39,20 +33,49 @@ document.querySelectorAll('.square').forEach((square) => {
   }
 });
 
-document.querySelectorAll('.square').forEach((square) => {
-  const squarePosition = square.getAttribute('id');
-  for (let i = 0; i < squarePosition.length; i++) {
-    const onePiece = document.getElementById('piece');
-    if (!squarePosition[i] === onePiece) {
-      squarePosition.addEventListener('click', function() => {
-        
+function myTurn() {
+  if (initialGame.player1First === initialGame.player1Black) {
+    return true;
+  } if (initialGame.player1First === initialGame.player2White) {
+    return false;
+  }
+}
+
+function addPieceToBoard() {
+  document.querySelectorAll('.square').forEach((square) => {
+    if (!square.hasChildNodes()) {
+      square.addEventListener('click', () => {
+        const piece = document.createElement('div');
+        if (initialGame.player1Black) {
+          piece.setAttribute('class', 'piece color-black');
+          square.appendChild(piece);
+        } else if (initialGame.player2White) {
+          piece.setAttribute('class', 'piece piece-white');
+          square.appendChild(piece);
+        }
       });
     }
-  }
-});
+  });
+}
+
+addPieceToBoard();
+
+// function addPieceToBoard() {
+//   document.querySelectorAll('.square').forEach((square) => {
+//     if (!square.hasChildNodes()) {
+//       square.addEventListener('click', () => {
+//         const piece = document.createElement('div');
+//         piece.setAttribute('class', 'piece');
+//         square.appendChild(piece);
+//       });
+//     }
+//   });
+// }
+
+// addPieceToBoard();
+
 
 // loop no board em todos squares
 // para cada square verificar se dentro dele nao existe uma peca(se o square tem um child)
 // se nao tiver, colocar um eventlistener (comecar colocar console.log) onclick
 // na hora que clicar, verificar de quem é a vez
-//
