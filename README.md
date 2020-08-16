@@ -1,4 +1,16 @@
 # Othello Game Project
+This is the first project of the Ironhack Web Development course, where I reproduced the traditional game Othello or Reversi.
+
+## Introduction to the game
+Reversi is an board game is played by two parties on an eight-by-eight square grid with pieces that have two distinct sides. Pieces have a black and white colour, each side representing one player. The goal for each player is to make pieces of their colour constitute a majority of the pieces on the board at the end of the game, by turning over as many of their opponent's pieces as possible.
+
+## Getting Started
+This game works at the browser and doesn't need any installation.
+
+Link to run the game in your browser => 
+
+## Prerequisites
+No hardware prerequisites needed.
 
 ## Game rules
 The goal is to get the majority of colour discs on the board at the end of the game. With the following rules:
@@ -26,3 +38,12 @@ The goal is to get the majority of colour discs on the board at the end of the g
 * The discs will be counted at the end of the game and the player with the majority of his or her color discs on the board is the winner.
 
 * A tie is possible.
+
+## Game and Coding Improvements
+
+## Author & Version Control
+
+* Patricia Tami Sakita - Othello Game Version 0.1 - Published in 
+
+
+
