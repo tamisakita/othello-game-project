@@ -1,8 +1,8 @@
 # Othello Game Project
-This is the first project of the Ironhack Web Development course, where I reproduced the traditional game Othello or Reversi.
+This is the first project of the Ironhack Web Development course, where I reproduced the traditional game Othello.
 
 ## Introduction to the game
-Reversi is an board game is played by two parties on an eight-by-eight square grid with pieces that have two distinct sides. Pieces have a black and white colour, each side representing one player. The goal for each player is to make pieces of their colour constitute a majority of the pieces on the board at the end of the game, by turning over as many of their opponent's pieces as possible.
+Othello is an board game is played by two parties on an eight-by-eight square grid with pieces that have two distinct sides. Pieces have a black and white colour, each side representing one player. The goal for each player is to make pieces of their colour constitute a majority of the pieces on the board at the end of the game, by turning over as many of their opponent's pieces as possible.
 
 ## Getting Started
 This game works at the browser and doesn't need any installation.
