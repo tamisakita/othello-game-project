@@ -7,7 +7,7 @@ Othello is an board game is played by two parties on an eight-by-eight square gr
 ## Getting Started
 This game works at the browser and doesn't need any installation.
 
-Link to run the game in your browser => 
+Link to run the game in your browser => [here](https://tamisakita.github.io/othello-game-project/)
 
 ## Prerequisites
 No hardware prerequisites needed.
@@ -40,6 +40,9 @@ The goal is to get the majority of colour discs on the board at the end of the g
 * A tie is possible.
 
 ## Game and Coding Improvements
+* Add a function to check if i can position a piece in a certain square;
+
+* Check the diagonals;
 
 ## Author & Version Control
 
