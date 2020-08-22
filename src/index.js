@@ -191,6 +191,51 @@ function checkHorizontal(square) {
   }
 }
 
+// function checkDiagonal1(square) {
+//   const squareId = square.getAttribute('id');
+//   let y = +squareId[9];
+//   let x = +squareId[7];
+
+//   let leftTopPieces = [];
+//   let rightTopPieces = [];
+//   let leftBottomPieces = [];
+//   let rightBottomPieces = [];
+
+//   const clickPiece = square.children[0];
+//   const clickPieceColor = clickPiece.getAttribute('class');
+
+//   for (let a = x - 1; a > 0; a -= 1) {
+//     for (let b = y - 1; b <= 8; b += 1) {
+//       const squareId2 = `square-${a}-${b}`;
+//       const leftTopSquare = document.getElementById(squareId2);
+//       const piece = leftTopSquare.children[0];
+
+//       if (piece) {
+//         leftTopPieces.push(piece);
+//       } else {
+//         break;
+//       }
+//     }
+//   }
+
+//   for (let c = leftTopPieces.length - 1; c > 0; c -= 1) {
+//     const colorPiece = leftTopPieces[c].getAttribute('class');
+
+//     if (colorPiece === clickPieceColor) {
+//       const squareId3 = +leftTopPieces[c].parentNode.getAttribute('id')[7];
+//       const squareId4 = +leftTopPieces[c].parentNode.getAttribute('id')[9];
+
+//       for (let d = squareId3; d < x; d += 1) {
+//         for (let e = squareId4; e < y; e += 1) {
+//           const turnPieceSquareId = `square-${d}-${e}`;
+//           const turnPieceSquare = document.getElementById(turnPieceSquareId);
+//           turnPieceSquare.children[0].setAttribute('class', clickPieceColor);
+//         }
+//       }
+//     }
+//   }
+// }
+
 function gameOver() {
   const squares = document.querySelectorAll('.square');
   let isGameOver = true;
@@ -215,6 +260,13 @@ function checkTheWinner() {
     newTag.appendChild(text);
     let newTagText = document.getElementById('h1');
     document.body.insertBefore(newTag, newTagText);
+    let div = document.createElement('div');
+    div.classList.add('button-style');
+    div.innerHTML = 'Start Again!';
+    div.addEventListener('click', () => {
+      window.location.reload();
+    });
+    document.body.appendChild(div);
   } else {
     document.body.innerHTML = "";
     let newTag = document.createElement('h1');
@@ -222,7 +274,14 @@ function checkTheWinner() {
     newTag.appendChild(text);
     let newTagText = document.getElementById('h1');
     document.body.insertBefore(newTag, newTagText);
-  } 
+    let div = document.createElement('div');
+    div.classList.add('button-style');
+    div.innerHTML = 'Start Again!';
+    div.addEventListener('click', () => {
+      window.location.reload();
+    });
+    document.body.appendChild(div);
+  }
   if (pieceBlack.length === pieceWhite.length) {
     document.body.innerHTML = "";
     let newTag = document.createElement('h1');
@@ -230,21 +289,12 @@ function checkTheWinner() {
     newTag.appendChild(text);
     let newTagText = document.getElementById('h1');
     document.body.insertBefore(newTag, newTagText);
+    let div = document.createElement('div');
+    div.classList.add('button-style');
+    div.innerHTML = 'Start Again!';
+    div.addEventListener('click', () => {
+      window.location.reload();
+    });
+    document.body.appendChild(div);
   }
 }
-
-// function checkVerticalLeft(square) {
-//   const squareId = square.getAttribute('id');
-//   let y = +squareId[9];
-//   let x = +squareId[7];
-
-//   let leftTopPieces = [];
-//   let leftBottomPieces = [];
-
-//   const clickPiece = square.children[0];
-//   const clickPieceColor = clickPiece.getAttribute('class');
-
-//   for (let e = x - 1; e <= 8; e += 1) {
-//   }
-// }
-

@@ -79,3 +79,19 @@ h2 {
 .color-white {
  background-color: white;
 }
+
+.button-style {
+  height: 50px;
+  max-width: 100vw;
+  width: 30%;
+  margin: 30px auto;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: black;
+  color: white;
+  height: 50px;
+  vertical-align: baseline;
+  padding-top: 15px;
+  cursor: pointer;
+}
