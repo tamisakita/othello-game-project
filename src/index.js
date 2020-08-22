@@ -48,16 +48,14 @@ function addPieceToBoard() {
           playerTurn = 'white';
           checkVertical(square);
           checkHorizontal(square);
-          gameOver();
-          console.log(gameOver());
+          if (gameOver()) checkTheWinner();
         } else {
           square.appendChild(piece);
           piece.setAttribute('class', 'piece color-white');
           playerTurn = 'black';
           checkVertical(square);
           checkHorizontal(square);
-          gameOver();
-          console.log(gameOver());
+          if (gameOver()) checkTheWinner();
         }
       });
     }
@@ -65,10 +63,6 @@ function addPieceToBoard() {
 }
 
 addPieceToBoard();
-
-function checkOpponentPieces() {
-
-}
 
 function checkVertical(square) {
   const squareId = square.getAttribute('id');
@@ -208,9 +202,35 @@ function gameOver() {
     }
   }
   return isGameOver;
-  // checar se todos os squares estao ocupados com uma peça OU se nao tenho mais espacos vazios
-  // se estiver, verificar quantos pecas pretas tenho e quantas brancas tenho
-  // verificar quem tem a maior quantidade
+}
+
+function checkTheWinner() {
+  const pieceBlack = document.querySelectorAll('.color-black');
+  const pieceWhite = document.querySelectorAll('.color-white');
+
+  if (pieceBlack.length > pieceWhite.length) {
+    document.body.innerHTML = "";
+    let newTag = document.createElement('h1');
+    let text = document.createTextNode('Black is the winner!');
+    newTag.appendChild(text);
+    let newTagText = document.getElementById('h1');
+    document.body.insertBefore(newTag, newTagText);
+  } else {
+    document.body.innerHTML = "";
+    let newTag = document.createElement('h1');
+    let text = document.createTextNode('White is the winner!');
+    newTag.appendChild(text);
+    let newTagText = document.getElementById('h1');
+    document.body.insertBefore(newTag, newTagText);
+  } 
+  if (pieceBlack.length === pieceWhite.length) {
+    document.body.innerHTML = "";
+    let newTag = document.createElement('h1');
+    let text = document.createTextNode('It`s a tie!');
+    newTag.appendChild(text);
+    let newTagText = document.getElementById('h1');
+    document.body.insertBefore(newTag, newTagText);
+  }
 }
 
 // function checkVerticalLeft(square) {
@@ -228,6 +248,3 @@ function gameOver() {
 //   }
 // }
 
-// function verificar se posso colocar a peca
-// function se nao tiver movimentos o jogo acaba
-// function somar pecas e ver quem ganhou
