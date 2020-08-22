@@ -47,11 +47,17 @@ function addPieceToBoard() {
           piece.setAttribute('class', 'piece color-black');
           playerTurn = 'white';
           checkVertical(square);
+          checkHorizontal(square);
+          gameOver();
+          console.log(gameOver());
         } else {
           square.appendChild(piece);
           piece.setAttribute('class', 'piece color-white');
           playerTurn = 'black';
           checkVertical(square);
+          checkHorizontal(square);
+          gameOver();
+          console.log(gameOver());
         }
       });
     }
@@ -100,11 +106,15 @@ function checkVertical(square) {
 
   for (let r = nextPieces.length - 1; r > 0; r -= 1) {
     const colorPiece = nextPieces[r].getAttribute('class');
-    if (colorPiece === clickPieceColor) {
-      const piecesFlipped = nextPieces[r].getAttribute('class', clickPieceColor);
 
-      console.log(piecesFlipped);
-        // transformar todos os pieces na cor do color clickPieceColor
+    if (colorPiece === clickPieceColor) {
+      const squareId3 = +nextPieces[r].parentNode.getAttribute('id')[9];
+
+      for (let h = y; h < squareId3; h += 1) {
+        const turnPieceSquareId = `square-${x}-${h}`;
+        const turnPieceSquare = document.getElementById(turnPieceSquareId);
+        turnPieceSquare.children[0].setAttribute('class', clickPieceColor);
+      }
     }
   }
 
@@ -112,114 +122,112 @@ function checkVertical(square) {
     const colorPiece = previousPieces[f].getAttribute('class');
 
     if (colorPiece === clickPieceColor) {
-      clickPiece.setAttribute('class', colorPiece);
-      console.log('sao iguais previous');
+      const squareId3 = +previousPieces[f].parentNode.getAttribute('id')[9];
+
+      for (let z = squareId3; z < y; z += 1) {
+        const turnPieceSquareId = `square-${x}-${z}`;
+        const turnPieceSquare = document.getElementById(turnPieceSquareId);
+        turnPieceSquare.children[0].setAttribute('class', clickPieceColor);
+      }
     }
   }
 }
 
-// const squares = document.querySelectorAll('.square');
-// let isPieceTurned = false;
-// for (let i = 0; i < squares.length; i += 1) {
-//   const squareId = squares[i].getAttribute('id');
-//   let x = +squareId[7];
-//   let y = +squareId[9];
+function checkHorizontal(square) {
+  const squareId = square.getAttribute('id');
+  let y = +squareId[9];
+  let x = +squareId[7];
 
-//   const piece = squares[i].querySelector('.piece');
-//   if (!squares[i].hasChildNodes()) continue;
-//   const pieceColor = piece.getAttribute('class');
+  let leftPieces = [];
+  let rightPieces = [];
 
-//   const vertical1 = `square-${x}-${y - 1}`;
-//   const vertical2 = `square-${x}-${y + 1}`;
+  const clickPiece = square.children[0];
+  const clickPieceColor = clickPiece.getAttribute('class');
 
-//   const verticalSquare1 = document.getElementById(vertical1);
-//   const verticalSquare2 = document.getElementById(vertical2);
+  for (let i = x + 1; i <= 8; i += 1) {
+    const squareId2 = `square-${i}-${y}`;
+    const leftSquare = document.getElementById(squareId2);
+    const piece = leftSquare.children[0];
 
-//   console.log('square sendo verificada', squares[i]);
-//   console.log('vertical1', verticalSquare1, 'vertical2', verticalSquare2);
+    if (piece) {
+      leftPieces.push(piece);
+    } else {
+      break;
+    }
+  }
 
-//   if (verticalSquare1 && verticalSquare2) {
-//     let checkIfHavePiece1 = verticalSquare1.children[0];
-//     let checkIfHavePiece2 = verticalSquare2.children[0];
-//     if (checkIfHavePiece1 && checkIfHavePiece2) {
-//       const color1 = checkIfHavePiece1.getAttribute('class');
-//       const color2 = checkIfHavePiece2.getAttribute('class');
-//       if (color1 !== pieceColor && color2 !== pieceColor) {
-//         piece.setAttribute('class', color1);
-//         isPieceTurned = true;
-//         break;
-//       }
-//     }
-//   }
-// }
-// if (isPieceTurned) {
-//   checkOpponentPieces();
-// }
+  for (let a = x - 1; a > 0; a -= 1) {
+    const squareId2 = `square-${a}-${y}`;
+    const rightSquare = document.getElementById(squareId2);
+    const piece = rightSquare.children[0];
 
-// procurar em cada peça se tem em volta delas peças de outra cor
-// começar identificando se tem duas peças em volta(horizontal, vertical ou diagonais)
+    if (piece) {
+      rightPieces.push(piece);
+    } else {
+      break;
+    }
+  }
 
-// horizontal x-1, y
-// diagonal x-1, y+1/ x+1, y-1
-// vertical x, y-1
-// square-[7]-[9] = 7 =x 9=y; getElement by id
-// if (square 1 && square 2) verficar se esses squares tem piece
+  for (let b = leftPieces.length - 1; b > 0; b -= 1) {
+    const colorPiece = leftPieces[b].getAttribute('class');
 
-// function verificar se posso colocar a peca
-// function se nao tiver movimentos o jogo acaba
-// function somar pecas e ver quem ganhou
+    if (colorPiece === clickPieceColor) {
+      const squareId3 = +leftPieces[b].parentNode.getAttribute('id')[7];
 
-// const rows = document.querySelectorAll('.row');
-//   for (let i = 0; i < rows.length; i += 1) {
-//     const squares = rows[i].querySelectorAll('.square');
-//     console.log(squares);
+      for (let c = x; c < squareId3; c += 1) {
+        const turnPieceSquareId = `square-${c}-${y}`;
+        const turnPieceSquare = document.getElementById(turnPieceSquareId);
+        turnPieceSquare.children[0].setAttribute('class', clickPieceColor);
+      }
+    }
+  }
 
-//     for (let j = 0; j < squares.length; j += 1) {
-//       const squareId = squares[j].getAttribute('id');
-//       console.log(squareId);
+  for (let c = rightPieces.length - 1; c > 0; c -= 1) {
+    const colorPiece = rightPieces[c].getAttribute('class');
 
-//       let x = +squareId[7];
-//       let y = +squareId[9];
+    if (colorPiece === clickPieceColor) {
+      const squareId3 = +rightPieces[c].parentNode.getAttribute('id')[7];
 
-//       const piece = squares[j].querySelector('.piece');
-//       if (!squares[j].hasChildNodes()) continue;
-//       const pieceColor = piece.getAttribute('class');
+      for (let d = squareId3; d < x; d += 1) {
+        const turnPieceSquareId = `square-${d}-${y}`;
+        const turnPieceSquare = document.getElementById(turnPieceSquareId);
+        turnPieceSquare.children[0].setAttribute('class', clickPieceColor);
+      }
+    }
+  }
+}
 
-//       const vertical = ;
-//     }
-//   }
+function gameOver() {
+  const squares = document.querySelectorAll('.square');
+  let isGameOver = true;
 
-// function checkVertical(square) {
+  for (let i = 0; i < squares.length; i += 1) {
+    if (!squares[i].children[0]) {
+      isGameOver = false;
+      break;
+    }
+  }
+  return isGameOver;
+  // checar se todos os squares estao ocupados com uma peça OU se nao tenho mais espacos vazios
+  // se estiver, verificar quantos pecas pretas tenho e quantas brancas tenho
+  // verificar quem tem a maior quantidade
+}
+
+// function checkVerticalLeft(square) {
 //   const squareId = square.getAttribute('id');
 //   let y = +squareId[9];
 //   let x = +squareId[7];
 
-//   let previousPieces = [];
-//   let nextPieces = [];
+//   let leftTopPieces = [];
+//   let leftBottomPieces = [];
 
 //   const clickPiece = square.children[0];
 //   const clickPieceColor = clickPiece.getAttribute('class');
 
-//   for (let k = y + 1; k <= 8; k += 1) {
-//     const squareId2 = `square-${x}-${k}`;
-//     const nextSquare = document.getElementById(squareId2);
-//     const piece = nextSquare.children[0];
-
-//     if (piece) {
-//       nextPieces.push(piece);
-//     } else {
-//       break;
-//     }
-//   }
-//   for (let p = y - 1; p > 0; p -= 1) {
-//     const squareId2 = `square-${x}-${p}`;
-//     const previousSquare = document.getElementById(squareId2);
-//   }
-
-//   for (let r = nextPieces.length - 1; r >= 0; r -= 1) {
-//     const colorPiece = nextPieces[r].getAttribute('class');
-//     if (colorPiece === clickPieceColor) {
-//       console.log('sao iguais');
-//     }
+//   for (let e = x - 1; e <= 8; e += 1) {
 //   }
 // }
+
+// function verificar se posso colocar a peca
+// function se nao tiver movimentos o jogo acaba
+// function somar pecas e ver quem ganhou
